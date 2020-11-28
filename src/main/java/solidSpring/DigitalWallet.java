@@ -4,9 +4,9 @@ public class DigitalWallet {
 	
 	private static DigitalWallet wallet = new DigitalWallet();
 	
-	private static final String fName = "Bitcoin";
-	private static final String fWhitePaper = "https://bitcoin.org/bitcoin.pdf";
-	private double fBTC = 0;
+	private static final String NAME = "Bitcoin";
+	private static final String WHITE_PAPER = "https://bitcoin.org/bitcoin.pdf";
+	private double BTC = 0;
 	
 	private DigitalWallet() { };
 	
@@ -18,11 +18,11 @@ public class DigitalWallet {
 	
 	public DigitalWallet processTransaction( double amount ) throws Exception
 	{
-		if( fBTC + amount < 0 )
+		if( BTC + amount < 0 )
 		{
-			throw new Exception(String.format("\nInsufficient funds:\n\t BTC Available: %1$s\n\t BTC Requested: %2$s", fBTC, amount));
+			throw new Exception(String.format("\nInsufficient funds:\n\t BTC Available: %1$s\n\t BTC Requested: %2$s", BTC, amount));
 		} else {
-			fBTC = fBTC + amount;
+			BTC = BTC + amount;
 		}
 		
 		return this;
@@ -30,7 +30,7 @@ public class DigitalWallet {
 	
 	public DigitalWallet zero()
 	{
-		fBTC = 0;
+		BTC = 0;
 		
 		return this;
 	}
@@ -45,22 +45,22 @@ public class DigitalWallet {
 	////////////////////////////////////////
 	public double getBTC() 
 	{
-		return fBTC;
+		return BTC;
 	}
 	
 	public String getName()
 	{
-		return fName;
+		return NAME;
 	}
 	
 	public String getWhitePaper()
 	{
-		return fWhitePaper;
+		return WHITE_PAPER;
 	}
 	
 	public double getSatoshis()
 	{
-		return fBTC * 100000000;
+		return BTC * 100000000;
 	}
 
 }
